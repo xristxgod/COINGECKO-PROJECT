@@ -1,0 +1,57 @@
+[
+  {
+    "name": "bitcoin",
+    "symbol": "btc",
+    "defaultPrice": null
+  },
+  {
+    "name": "tron",
+    "symbol": "trx",
+    "defaultPrice": null
+  },
+  {
+    "name": "solana",
+    "symbol": "sol",
+    "defaultPrice": null
+  },
+  {
+    "name": "binancecoin",
+    "symbol": "bnb",
+    "defaultPrice": null
+  },
+  {
+    "name": "chainlink",
+    "symbol": "link",
+    "defaultPrice": null
+  },
+  {
+    "name": "danat-coin",
+    "symbol": "dnc",
+    "defaultPrice": 1.0
+  },
+  {
+    "name": "matic-network",
+    "symbol": "matic",
+    "defaultPrice": null
+  },
+  {
+    "name": "rzm-network",
+    "symbol": "rzm",
+    "defaultPrice": 0.2
+  },
+  {
+    "name": "tether",
+    "symbol": "usdt",
+    "defaultPrice": null
+  },
+  {
+    "name": "usd-coin",
+    "symbol": "usdc",
+    "defaultPrice": null
+  },
+  {
+    "name": "binance-usd",
+    "symbol": "busd",
+    "defaultPrice": null
+  }
+]

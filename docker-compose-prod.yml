@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  mango-exchange-parser-coins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mango-exchange-parser-coins
+    command: /usr/bin/supervisord
+    env_file:
+      - .env
+    logging:
+      options:
+        max-size: 10m
+    volumes:
+      - ./files:/home/app/files
+    networks:
+      - mango-exchange-network
+
+networks:
+  mango-exchange-network:
+    driver: bridge

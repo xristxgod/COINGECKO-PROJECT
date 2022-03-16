@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  mango-exchange-parser-coins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mango-exchange-parser-coins
+    command: /usr/bin/supervisord
+    env_file:
+      - .env.dist
+    logging:
+      options:
+        max-size: 10m
+    volumes:
+      - ./files:/home/app/files
+    networks:
+      - mango-exchange-network
+
+  postgres-exchange:
+    env_file:
+      - .env.dist
+    image: timescale/timescaledb:latest-pg12
+    container_name: timescale_postgres_exchange
+    working_dir: /application
+    volumes:
+      - .:/application
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    ports:
+      - "${POSTGRES_EXTERNAL_PORT}:5432"
+    networks:
+      - mango-exchange-network
+
+
+networks:
+  mango-exchange-network:
+    driver: bridge
