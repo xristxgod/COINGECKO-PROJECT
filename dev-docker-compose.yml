@@ -8,7 +8,7 @@ services:
     container_name: mango-exchange-parser-coins
     command: /usr/bin/supervisord
     env_file:
-      - .env.dist
+      - .env
     logging:
       options:
         max-size: 10m
@@ -19,7 +19,7 @@ services:
 
   postgres-exchange:
     env_file:
-      - .env.dist
+      - .env
     image: timescale/timescaledb:latest-pg12
     container_name: timescale_postgres_exchange
     working_dir: /application

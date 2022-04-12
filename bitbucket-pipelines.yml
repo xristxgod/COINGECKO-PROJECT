@@ -11,7 +11,7 @@ pipelines:
                 MODE: 'script'
                 COMMAND: 'deploy.sh'
                 ENV_VARS: >-
-                  COMPOSE_FILE='docker-compose-stg.yml'
+                  COMPOSE_FILE='dev-docker-compose.yml'
 
   custom:
     deploy-master-to-prod:
@@ -25,4 +25,4 @@ pipelines:
                 MODE: 'script'
                 COMMAND: 'deploy.sh'
                 ENV_VARS: >- 
-                  COMPOSE_FILE='docker-compose-prod.yml'
+                  COMPOSE_FILE='prod-docker-compose.yml'

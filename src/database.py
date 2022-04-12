@@ -23,9 +23,10 @@ class DB:
         try:
             conn: asyncpg.Connection = await asyncpg.connect(DB_URL)
             await conn.execute(f'''
-                INSERT INTO {coin}(time, price) VALUES($1, $2)
+                INSERT INTO {coin} (time, price) VALUES($1, $2)
             ''', time, value)
             return True
         except Exception as e:
-            logger.error(f'INSERT TO "{coin}" ERROR: {e}')
+            if str(e).find('duplicate key value') == -1:
+                logger.error(f'INSERT TO "{coin}" ERROR: {e}')
             return False

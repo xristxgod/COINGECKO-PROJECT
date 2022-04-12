@@ -33,12 +33,14 @@ async def get_currency_of_coins(coins: List[dict]) -> None:
                     last_times.update({coin_name: currents[coin_name]['time']})
                     is_update = True
                 else:
-                    currents.update({coin_name: all_results[coin["name"]]})
-                    is_update = currents[coin_name] is not None and last_times[coin_name] != currents[coin_name]['time']
+                    currents.update({coin_name: all_results[coin_name]})
+                    is_update = currents[coin_name] is not None and (
+                        (coin_name not in last_times.keys()) or (last_times[coin_name] != currents[coin_name]['time'])
+                    )
 
                 if is_update:
                     last_times.update({coin_name: currents[coin_name]['time']})
-                    await db.insert_coin_currency(coin_name, currents[coin_name]['time'], currents[coin_name]['value'])
+                    await db.insert_coin_currency(coin['symbol'], currents[coin_name]['time'], currents[coin_name]['value'])
             except Exception as e:
                 logger.error(f'ERROR PARSING {coin["name"]}: {e}')
         await async_sleep(10)
