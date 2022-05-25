@@ -53,5 +53,10 @@
     "name": "binance-usd",
     "symbol": "busd",
     "defaultPrice": null
+  },
+  {
+    "name": "pont",
+    "symbol": "pont",
+    "defaultPrice": 1.0
   }
 ]
